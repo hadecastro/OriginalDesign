@@ -1,6 +1,8 @@
 int carX = 50;
 int carY = 280;
-
+float sunY = 0;
+float g = 230;
+float r = 180;
 void setup()
 {
   size(400, 300);
@@ -9,21 +11,28 @@ void setup()
 void draw()
 {
 	carX = carX + 1;
+	sunY = sunY + 0.5;
+	g = g - 0.3;
 	sky();
 	sun();
+	mountains();
 	ground();
-	house();
 	car();
 	if (carX > 450)
 	{
 		carX = -100;
 	}
+
+	if (sunY > 400)
+	{
+		sunY = -100;
+	}
 }
 
 void sky()
 {
-	background(180, 200, 255);
-	fill(250, 230, 180);
+	background(r, g, 255);
+
 }
 
 void ground()
@@ -35,22 +44,20 @@ void ground()
 	rect(0, 270, 400, 30);
 }
 
-void house()
+
+
+void mountains()
 {
-	noStroke();
-	fill(255, 80, 80);
-	rect(175, 210, 50, 50);
-	fill(255, 127, 80);
-	triangle(200, 175, 160, 210, 240, 210);
-	fill(200);
-	rect(180, 215, 15, 15);
-	rect(205, 215, 15, 15);
+	fill(100, 230, 100);
+	ellipse(50, 300, 400, 300);
+	fill(100, 240, 100);
+	ellipse(300, 300, 400, 300);
 }
 
 void sun()
 {
 	fill(255, 255, 0);
-	ellipse(mouseX, mouseY, 40, 40);
+	ellipse(175, sunY, 40, 40);
 }
 
 void car()
