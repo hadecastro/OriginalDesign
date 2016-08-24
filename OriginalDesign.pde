@@ -13,19 +13,23 @@ void draw()
 	carX = carX + 1;
 	sunY = sunY + 0.5;
 	g = g - 0.3;
+	r = r / 1.05;
 	sky();
 	sun();
 	mountains();
 	ground();
+	lamp();
 	car();
 	if (carX > 450)
 	{
 		carX = -100;
 	}
 
-	if (sunY > 400)
+	if (sunY > 300)
 	{
-		sunY = -100;
+		sunY = -50;
+		g = 230;
+		r = 180;
 	}
 }
 
@@ -43,7 +47,6 @@ void ground()
 	fill(150);
 	rect(0, 270, 400, 30);
 }
-
 
 
 void mountains()
@@ -69,4 +72,10 @@ void car()
 	rect(carX, carY - 35, 40, 20);
 	fill(0, 0, 255);
 	rect(carX - 10, carY - 20, 60, 20);
+}
+
+void lamp()
+{
+	fill(100, 200, 100);
+	rect(100, 150, 10, 120);
 }
