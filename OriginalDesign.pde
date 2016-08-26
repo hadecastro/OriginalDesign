@@ -1,8 +1,11 @@
 int carX = 50;
 int carY = 280;
 float sunY = 0;
-float g = 230;
-float r = 180;
+float skyG = 230;
+float skyR = 190;
+int lampG = 210;
+int lampR = 210;
+int lampB = 210;
 void setup()
 {
   size(400, 300);
@@ -12,8 +15,8 @@ void draw()
 {
 	carX = carX + 1;
 	sunY = sunY + 0.5;
-	g = g - 0.3;
-	r = r / 1.05;
+	skyG = skyG - 0.3;
+	skyR = skyR / 1.005;
 	sky();
 	sun();
 	mountains();
@@ -28,21 +31,28 @@ void draw()
 	if (sunY > 300)
 	{
 		sunY = -50;
-		g = 230;
-		r = 180;
+		skyG = 230;
+		skyR = 180;
 	}
+}
+
+void mousePressed(){
+	redraw();
+ lampG = 230;
+ lampR = 240;
+ lampB = 50;
+
 }
 
 void sky()
 {
-	background(r, g, 255);
-
+	background(skyR, skyG, 255);
 }
 
 void ground()
 {
 	noStroke();
-	fill(130, 255, 135);
+	fill(120, 245, 125);
 	rect(0, 260, 400, 40);
 	fill(150);
 	rect(0, 270, 400, 30);
@@ -76,6 +86,12 @@ void car()
 
 void lamp()
 {
+	fill(lampR, lampG, lampB);
+	ellipse(105, 140, 25, 30);
+	ellipse(275, 140, 25, 30);	
 	fill(100, 200, 100);
-	rect(100, 150, 10, 120);
+	rect(100, 155, 10, 115);
+	rect(270, 155, 10, 115);
+	ellipse(105, 120, 10, 10);
+	ellipse(275, 120, 10, 10);
 }
